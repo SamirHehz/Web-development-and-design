@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://wrd.app.fit.ba/2018-19/fit-dijalog.css">
+    <style>
+        #RedBoxID
+        {
+            width: 50px;
+            height: 50px;
+            background-color: red; 
+            position: absolute;
+            color:white;
+            transition: 0.2s;
+            border-radius: 25px;
+            left:100px;
+        }
+        .BlackBoxKlasa
+        {
+            width: 50px;
+            height: 50px;
+            background-color: black; 
+            position: absolute;
+            color:white;
+            text-align: center;
+            border-radius: 25px;
+            transition: 1s;
+            font-size: larger;
+        }
+        #InfoBoxID
+        {
+            position: fixed;
+            right: 5px;
+            bottom: 5px;
+            width: 400px;
+            border: 2px solid green;
+        }
+
+        body{
+            overflow: hidden;
+        }
+       
+    </style>
+	<link rel="manifest" href="./manifest.json">
+</head>
+<body>
+ <button id="dugme">Prikazi dijalog</button>
+    <div id="RedBoxID">
+    </div>
+
+    <div id="BlackBoxID">
+        </div>
+   
+    <div id="InfoBoxID">
+        <div>       
+            <button id="StartButtonID">Start</button>
+            <button id="StopButtonID">Stop</button>
+        </div>
+        <di>
+                Bodovi: <span id="BodoviID">0</span> </div>
+        </di>
+     
+</body>
+
+<script>
+	var korak = 100;
+    var kazneniBodovi = 5;
+    var brojCrnihBodovaPocetno = 5;
+    var brzinaKretanja = 400;
+
+    var RedBox = document.getElementById("RedBoxID");
+ 
+    var StopButton = document.getElementById("StopButtonID");
+    var StartButton = document.getElementById("StartButtonID");
+
+    var sirinaDokumenta = document.documentElement.clientWidth;
+    var visinaDokumenta = document.documentElement.clientHeight;
+
+    document.onmousemove=function()
+    {
+        var e = window.event;
+
+        var posX = e.clientX;
+        var posY = e.clientY;
+
+        RedBox.style.left = posX-25 + "px";
+        RedBox.style.top = posY-25 + "px";
+    } 
+
+    function idiLijevo(b)
+    {   
+
+         var a = parseInt(window.getComputedStyle(b).left);
+        a = a -korak;
+        if(a<0)
+          a = sirinaDokumenta;
+        b.style.left = a + "px";
+    }
+
+    function idiGore(b)
+    {
+        var a = parseInt(window.getComputedStyle(b).top);
+        a = a-korak;
+        if(a<0)
+          a = visinaDokumenta;
+        b.style.top = a + "px";
+    }
+
+    function idiDesno(b)
+    {
+        var a = parseInt(window.getComputedStyle(b).left);
+        a = a +korak;
+        if(a>sirinaDokumenta)
+          a = 0;
+        b.style.left = a + "px";
+    }
+
+    function idiDole(b)
+    {
+        var a = parseInt(window.getComputedStyle(b).top);
+        a = a+korak;
+        if(a>visinaDokumenta)
+          a = 0;
+        b.style.top = a + "px";
+    }
+
+    
+    function timerFunkcija() {
+        osvojeniBodovi += Math.pow(brojacBoxov, 0.5);
+        
+        var X = document.getElementsByClassName("BlackBoxKlasa");
+        for (var i = 0; i < X.length; i++) {
+            var x = X[i];
+            pomjeriBoxRandom(x);
+        }
+    }
+    
+    function pomjeriBoxRandom(box)
+    {
+       var x = Math.floor(Math.random() * 4);
+       if (x==0) idiDesno(box);
+       if (x==1) idiLijevo(box);
+       if (x==2) idiGore(box);
+       if (x==3) idiDole(box);
+    }
+
+    var timerVarijabla;
+    StartButton.onclick = function()
+    {
+         timerVarijabla =setInterval(timerFunkcija, brzinaKretanja);
+         StopButton.disabled=false;
+         StartButton.disabled=true;
+    }
+   
+    StopButton.onclick = function()
+    {
+         clearInterval(timerVarijabla);
+         StopButton.disabled=true;
+         StartButton.disabled=false;
+    }
+    
+    var brojacBoxov=0;
+    function dodajNovBox()
+    {
+        brojacBoxov++;
+        var x = document.createElement('div');
+        x.className = "BlackBoxKlasa";
+        x.id = "BlackBox-" + brojacBoxov;
+        x.innerHTML =  brojacBoxov;
+        document.body.appendChild(x);   
+    }
+
+    for (var i = 0; i < brojCrnihBodovaPocetno; i++) {
+        dodajNovBox();
+    }
+
+    function Tacka(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    function jelPreklapanje(A1, A2, B1, B2) { 
+   
+        if (A2.x < B1.x) return false;
+        if (B2.x < A1.x) return false;
+        if (A2.y < B1.y) return false;
+        if (B2.y < A1.y) return false;
+        return true; 
+    } 
+
+    function provjeriKoliziju(box2)
+    {
+        var box1 = RedBox;
+        var x1 = parseInt(window.getComputedStyle(box1).left);
+        var x2 = parseInt(window.getComputedStyle(box2).left);
+
+        var w1 = parseInt(window.getComputedStyle(box1).width);
+        var w2 = parseInt(window.getComputedStyle(box2).width);
+
+        var y1 = parseInt(window.getComputedStyle(box1).top);
+        var y2 = parseInt(window.getComputedStyle(box2).top);
+        
+        var h1 = parseInt(window.getComputedStyle(box1).height);
+        var h2 = parseInt(window.getComputedStyle(box2).height);
+
+        var A1 = new Tacka(x1, y1);
+        var A2 = new Tacka(x1+w1, y1+h1);
+        var B1 = new Tacka(x2, y2);
+        var B2 = new Tacka(x2+w1, y2+h2);
+        return jelPreklapanje(A1, A2, B1, B2);  
+    }
+
+    var osvojeniBodovi = 0;
+    function racunajBodove(){
+        var X = document.getElementsByClassName("BlackBoxKlasa");
+        for (var i = 0; i < X.length; i++) {
+            var x =  X[i];
+            if (provjeriKoliziju(x))
+            {
+                osvojeniBodovi -= kazneniBodovi;
+            }
+        }
+
+        document.getElementById("BodoviID").innerHTML = (osvojeniBodovi/10.).toFixed(1);;
+    };
+
+    setInterval(racunajBodove, 50);
+    setInterval(dodajNovBox, 5000);
+
+	if ('serviceWorker' in navigator) {
+ window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => {
+          console.log('Service worker registered.', reg);
+	});
+	});
+}
+
+
+ 
+</script>
+
+<script src="https://wrd.app.fit.ba/2018-19/fit-dijalog.js"></script>
+    <script>    
+        document.getElementById("dugme").onclick = function(){
+            dijalogInfo("Ovo je poruka");
+        };
+    </script>
+</html>
+
+
