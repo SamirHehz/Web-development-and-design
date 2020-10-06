@@ -1,0 +1,150 @@
+.wrapper
+{
+    background-color:lightgray;
+    width:400px;
+    height:690px;
+    margin-left:auto;
+    margin-right:auto;
+    box-shadow: 10px 10px 10px 10px #383838;
+    border-radius: 25px;
+    padding-top:20px;
+    
+}
+.natpis
+{
+    width:400px;
+    height:60px;
+    background-color:lightgray;
+    letter-spacing: 5px;
+    
+}
+.display
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:350px;
+    height:80px;
+    background-color:#CCFFCC;
+    margin-top:2px;
+    border:solid black 1px;
+    border-radius: 7px;
+}
+.dugmad
+{
+    margin-top:2px;
+    height:500px;
+    width:100%;
+    background-color:lightgrey;
+}
+
+input {
+    outline: none;
+}
+
+p
+{
+   text-align: center;
+   text-shadow: 8px;
+   padding-top:20px;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+body{
+    background-color: grey;
+}
+input{
+    height:70px;
+    width:70px;
+    border-radius: 15px;
+      
+}
+.prvired
+{
+    height:80px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:10%;
+    padding-top:30px;
+
+}
+.drugired
+{
+    height:80px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:10%;
+    padding-top:10px;
+
+}
+.trecired
+{
+    height:80px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:10%;
+    padding-top:10px;
+
+}
+.cetvrtired
+{
+    height:80px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:10%;
+    padding-top:10px;
+
+}
+.petired
+{
+    height:80px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:10%;
+    padding-top:10px;
+
+}
+#jednako
+{
+    height:160px;
+    width:70px;
+}
+#nula
+{
+    height:70px;
+    width:145px;
+}
+#jedan,#dva,#tri
+{
+    position: relative;
+    bottom:45px;
+}
+#jedan,#dva,#tri,#cetiri,#pet,#sest,#sedam,#osam,#devet,#nula,#mnozenje,#dijeljenje,#sabiranje,#oduzimanje,#jednako,#zarez
+{
+    background-color:#303030;
+    font-size:20px;
+    color:white;
+    box-shadow:2px 2px 2px 2px #383838;
+    margin-right:3px;
+    margin-left:3px;
+  
+}
+#ac,#c
+{
+    background-color: #FF0033;
+    color:white;
+    font-size:20px;
+    margin-right:3px;
+    margin-left:3px;
+
+}
+.sve
+{
+    border-radius: 25px;
+}
+body{
+    padding-top:40px;
+}

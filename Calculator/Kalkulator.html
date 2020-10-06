@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="main.css">
+   
+</head>
+<body>
+<div class="wrapper">
+    <div class="natpis">
+        <b><p>ELECTRONIC CALCULATOR</p></b>
+    </div>
+    <div class="display">
+        <h1 style="text-align: right;" id="result">0</h1>
+    </div>
+    <div class="dugmad">
+
+        <div class="prvired">
+
+            <input id="ac"type="button" value="AC" onclick="brisanje()">
+            <input id="c" type="button" value="C">
+            <input id="dijeljenje" type="button" value="%"  onclick="operacija(4)">
+            <input id="mnozenje" type="button" value="X"  onclick="operacija(3)">
+
+
+
+        </div>
+        <div class="drugired">
+
+            <input id="sedam" type="button" value="7" onclick="enterValue(7)">
+            <input id="osam" type="button" value="8" onclick="enterValue(8)">
+            <input id="devet" type="button" value="9" onclick="enterValue(9)">
+            <input id="oduzimanje" type="button" value="-" onclick="operacija(2)">
+
+        </div>
+        <div class="trecired">
+
+                <input id="cetiri" type="button" value="4" onclick="enterValue(4)">
+                <input id=pet type="button" value="5" onclick="enterValue(5)">
+                <input id="sest" type="button" value="6" onclick="enterValue(6)">
+                <input id="sabiranje" type="button" value="+" onclick="operacija(1)">
+
+        </div>
+        <div class="cetvrtired">
+
+                <input id="jedan" type="button" value="1" onclick="enterValue(1)">
+                <input id="dva" type="button" value="2" onclick="enterValue(2)">
+                <input id="tri" type="button" value="3" onclick="enterValue(3)">
+                <input id ="jednako" type="button" value="=" onclick="jednako()">
+
+        </div>
+        <div class="petired">
+
+                <input id="nula" type="button" value="0" onclick="enterValue(0)">
+                <input id="zarez" type="button" value="." onclick="enterValue('.')">
+
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script src="script.js"></script>
+</html>
